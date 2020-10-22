@@ -59,4 +59,4 @@ declare namespace ServerStatus {
  */
 declare function mcsrv(address: string): Promise<ServerStatus.Status | AxiosResponse>;
 
-export = mcsrv;
+export = { mcsrv };
