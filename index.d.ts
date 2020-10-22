@@ -1,57 +1,46 @@
 declare namespace ServerStatus {
-    declare type Status = Offline | Online
+    type Status = Offline | Online;
 
-    declare interface Offline {
-        ip: string
-        port: number
+    interface Offline {
+        ip: string;
+        port: string;
         debug: {
-            ping: boolean
-            query: boolean
-            srv: boolean
-            querymismatch: boolean
-            ipinsrv: boolean
-            animatedmotd: boolean
-            proxypipe: boolean
-            cachetime: number
-            api_version: string
-        }
-        online: boolean
-        hostname: string
+            ping: boolean;
+            query: boolean;
+            srv: boolean;
+            querymismatch: boolean;
+            ipinsrv: boolean;
+            cnameinsrv: boolean;
+            animatedmotd: boolean;
+            cachetime: number;
+            apiversion: number;
+        };
+        hostname: string;
+        online: boolean;
     }
 
-    declare interface Online extends Offline {
-        debug: {
-            ping: boolean
-            query: boolean
-            srv: boolean
-            querymismatch: boolean
-            ipinsrv: boolean
-            animatedmotd: boolean
-            proxypipe: boolean
-            cachetime: number
-            api_version: string
-            dns: {
-                [type: string]: {
-                    host: string
-                    class: string
-                    ttl: number
-                    type: string
-                    ip: string
-                }[]
+    interface Online extends Offline {
+        motd: {
+            raw: string[];
+            clean: string[];
+            html: string[];
+        };
+        players: {
+            online: number;
+            max: number;
+        };
+        version: string;
+        online: boolean;
+        protocol: number;
+        icon: string;
+        software: string;
+        map: string;
+        mods?: {
+            names: string[];
+            raw: {
+                [key: string]: string
             }
         }
-        motd: {
-            raw: string[]
-            clean: string[]
-            html: string[]
-        }
-        players: {
-            online: number
-            max: number
-        }
-        version: string
-        protocol: number
-        icon: string
     }
 }
 
@@ -65,7 +54,7 @@ declare namespace ServerStatus {
  * mcsrv("mc.hypixel.net");
  * //=> { online: true, ... }
  * ```
-*/
+ */
 declare function mcsrv(address: string): Promise<ServerStatus.Status>;
 
 export = mcsrv;
