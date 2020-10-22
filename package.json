@@ -27,8 +27,7 @@
         "ping"
     ],
     "dependencies": {
-        "ky": "^0.16.1",
-        "ky-universal": "^0.3.0"
+        "axios": "^0.20.0"
     },
     "devDependencies": {
         "ava": "^2.1.0",

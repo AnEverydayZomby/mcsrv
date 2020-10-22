@@ -1,3 +1,5 @@
+import { AxiosResponse } from "axios";
+
 declare namespace ServerStatus {
     type Status = Offline | Online;
 
@@ -55,6 +57,6 @@ declare namespace ServerStatus {
  * //=> { online: true, ... }
  * ```
  */
-declare function mcsrv(address: string): Promise<ServerStatus.Status>;
+declare function mcsrv(address: string): Promise<ServerStatus.Status | AxiosResponse>;
 
 export = mcsrv;
