@@ -9,7 +9,7 @@ const baseConfig = {
     }
 }
 
-module.exports = (address) => {
+module.exports = async (address) => {
     try {
         const res = await axios.get(address, baseConfig);
         return res.data;
