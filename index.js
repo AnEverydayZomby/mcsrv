@@ -1,5 +1,6 @@
 "use strict"
 
+const regeneratorRuntime = require('regenerator-runtime');
 const axios = require('axios');
 const baseConfig = {
     returnRejectPromiseOnError: true,
