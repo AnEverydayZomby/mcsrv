@@ -1,7 +1,8 @@
 import test from "ava"
-import mcsrv from "."
+import { mcsrv } from "."
 
 test("main", async (t) => {
-    const { online } = await mcsrv("mc.hypixel.net")
-    t.true(online)
+    const data = await mcsrv("play.aneverydayzombie.com");
+    t.true(data.online)
+    console.log(data);
 })

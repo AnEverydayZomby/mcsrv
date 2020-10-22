@@ -9,11 +9,13 @@ const baseConfig = {
     }
 }
 
-module.exports = async (address) => {
-    try {
-        const res = await axios.get(address, baseConfig);
-        return res.data;
-    } catch (err) {
-        return err.response;
+module.exports = {
+    async mcsrv(address) {
+        try {
+            const res = await axios.get(address, baseConfig);
+            return res.data;
+        } catch (err) {
+            return err.response;
+        }
     }
 }
